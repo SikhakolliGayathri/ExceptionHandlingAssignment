@@ -1,0 +1,34 @@
+package demoe;
+import java.util.Scanner;
+class RetestException extends Exception{
+public RetestException(String s) {
+}
+
+}
+public class Demo2 {
+public void doAverage(int average)throws RetestException{
+if(average<60) {
+throw new RetestException("retest");
+
+}
+else {
+System.out.println("study well");
+ }
+}
+  public static void main(String[] args)throws RetestException {
+   Demo2 d=new Demo2();
+   Scanner sc=new Scanner(System.in);
+   System.out.println("Enter the average : ");
+   int average=sc.nextInt();
+   try {
+   d.doAverage(average);
+
+}
+   catch(RetestException e) {
+   e.printStackTrace();
+  }
+
+  }
+}
+
+ 

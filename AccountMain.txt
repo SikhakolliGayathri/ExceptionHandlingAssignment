@@ -1,0 +1,95 @@
+package assignment1;
+import java.util.Scanner;
+public class AccountMain {
+	static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+    System.out.println("1.Withdraw ");
+    System.out.println("2.Deposit ");
+    System.out.println("3.Check Balance ");
+    System.out.println("0.EXIT");
+    int option = sc.nextInt();
+    int balance=5000;
+    AccountMain main=new AccountMain();			
+    switch (option) {
+    case 1:
+    int a;
+    try {
+    a = main.doWithdrawal(balance);
+    System.out.println(a);
+    balance=a;
+    } catch (InsufficientFundException e) {
+	// TODO Auto-generated catch block
+	System.out.println(e.errorMsg());
+  }
+
+break;
+
+case 2:
+     int b=main.doDeposit(balance);
+     System.out.println(b);
+     balance=b;
+     break;
+case 3:
+     int c=main.checkBalance(balance);
+     System.out.println(c);
+     balance=c;
+    break;
+case 0 :
+System.exit(0);
+default:
+     break;
+   }
+}		
+
+public int checkBalance(int amount) {
+
+ // TODO Auto-generated method stub
+
+if(amount<5000) {
+
+ System.out.println("Low Balance ");
+
+ }
+
+ return amount;
+
+ }
+
+public int doDeposit(int amount) {
+
+ Account a=new Account(amount, "Archana", amount);
+ System.out.println(a.getAccountHolderName());
+ System.out.println(a.getAccountNumber());
+ System.out.println("Enter amount to deposit");
+ int d=sc.nextInt();
+ amount=amount+d;
+ System.out.println("Deposited Successfully - new Balance -");
+ return amount;
+}
+  public int doWithdrawal(int amount) throws InsufficientFundException{
+  Account a=new Account(amount, "Gayathri", amount);
+  System.out.println(a.getAccountHolderName());
+  System.out.println(a.getAccountNumber());
+  System.out.println("Enter Amount to withdraw");
+  int w=sc.nextInt();
+  int x=amount;
+  amount=amount-w;
+  if(amount<5000) {InsufficientFundException e=new InsufficientFundException(amount);
+   System.out.println(e.errorMsg());
+
+ 
+
+	}
+
+   return amount;
+
+}
+
+ }
+
+ 
+
+ 
+	
+
+
